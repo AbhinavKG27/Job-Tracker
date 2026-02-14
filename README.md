@@ -116,18 +116,39 @@ Includes:
 
 Job-Tracker/
 │
+
 ├── public/
+
 │ └── logo.png
+
 │
+
 ├── src/
+
 │ ├── components/ # Reusable UI components
+
 │ ├── hooks/ # Custom hooks (test, proof logic)
+
 │ ├── lib/ # Core logic (match score, dataset, status)
+
 │ ├── pages/ # Main pages (Dashboard, Proof, etc.)
+
 │ ├── App.tsx # Root app
+
 │ └── index.tsx # Main entry UI logic
+
 │
+
 ├── index.html
+
 ├── package.json
+
 └── README.md
+
+
+## 🌐 Live Deployment
+
+🚀 Live App: https://job-tracker12.vercel.app/ 
+📦 GitHub Repository: https://github.com/AbhinavKG27/Job-Tracker
+
 
