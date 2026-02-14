@@ -1,73 +1,133 @@
-# Welcome to your Lovable project
+# 🚀 Job Notification Tracker (JNT)
 
-## Project info
+An intelligent Job Notification Tracker web application that helps users discover, track, and manage job opportunities using match scoring, daily digest simulation, status tracking, and a built-in test & proof submission system.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Designed with a premium UI and built using modern React + Vite architecture.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 📌 Project Overview
 
-**Use Lovable**
+Job Notification Tracker (JNT) is a smart job discovery platform that:
+- Matches jobs based on user preferences
+- Tracks application status
+- Saves jobs persistently
+- Generates a daily job digest
+- Enforces a test checklist before shipping
+- Provides a final proof & submission system
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+This project simulates a real-world product workflow with validation, persistence, and UX polish.
 
-Changes made via Lovable will be committed automatically to this repo.
+---
 
-**Use your preferred IDE**
+## 🧠 Core Features
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### 1️⃣ Intelligent Match Scoring
+- Calculates match % based on:
+  - Skills
+  - Role keywords
+  - Location preference
+  - Experience level
+- Shows visual score badges for each job
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 2️⃣ Preferences System (Persistent)
+- Role Keywords (comma-separated)
+- Skills (comma-separated)
+- Preferred Locations
+- Work Mode (Remote/Hybrid/Onsite)
+- Minimum Match Score Slider
+- Stored using localStorage
 
-Follow these steps:
+### 3️⃣ Job Dashboard
+- Search & filter jobs
+- Sort by:
+  - Latest
+  - Match Score
+  - Salary (High → Low)
+- "Show Only Matches" toggle
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 4️⃣ Save & Apply System
+- Save jobs with heart icon ❤️
+- Saved jobs persist after refresh
+- Apply opens job link in new tab (secure)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 5️⃣ Status Tracking Pipeline
+Application statuses:
+- Not Applied
+- Applied
+- Interviewing
+- Rejected
+- Offer
 
-# Step 3: Install the necessary dependencies.
-npm i
+Includes:
+- Status history
+- Persistent updates
+- Recent status log
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+### 6️⃣ Daily Digest (Top 10 Jobs)
+- Personalized digest based on preferences
+- Cached per day (localStorage)
+- Copy to clipboard feature
+- Email draft generator
 
-**Edit a file directly in GitHub**
+### 7️⃣ Built-in Test Checklist System (/jt/07-test)
+Includes 10 validation checks:
+- Preferences persistence
+- Match score accuracy
+- Save job persistence
+- Digest generation
+- Status tracking persistence
+- Console error checks
+- And more...
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Ship page remains LOCKED until all tests pass.
 
-**Use GitHub Codespaces**
+### 8️⃣ Proof & Submission System (/jt/proof)
+Includes:
+- Step Completion Summary (8 steps)
+- Artifact Collection Inputs:
+  - Lovable Project Link
+  - GitHub Repository Link
+  - Live Deployment URL
+- URL validation
+- Final submission export
+- Ship status badge:
+  - Not Started
+  - In Progress
+  - Shipped
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+---
 
-## What technologies are used for this project?
+## 🏗️ Tech Stack
 
-This project is built with:
+| Layer | Technology |
+|------|------------|
+| Frontend | React + TypeScript |
+| Build Tool | Vite |
+| Styling | Tailwind CSS + ShadCN UI |
+| Icons | Lucide React |
+| State | React Hooks + localStorage |
+| UX Notifications | Sonner Toast |
+| Architecture | Component-Based SPA |
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## 📁 Folder Structure
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Job-Tracker/
+│
+├── public/
+│ └── logo.png
+│
+├── src/
+│ ├── components/ # Reusable UI components
+│ ├── hooks/ # Custom hooks (test, proof logic)
+│ ├── lib/ # Core logic (match score, dataset, status)
+│ ├── pages/ # Main pages (Dashboard, Proof, etc.)
+│ ├── App.tsx # Root app
+│ └── index.tsx # Main entry UI logic
+│
+├── index.html
+├── package.json
+└── README.md
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
