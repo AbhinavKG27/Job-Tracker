@@ -115,6 +115,7 @@ Includes:
 ## 📁 Folder Structure
 
 Job-Tracker/
+
 │
 
 ├── public/
