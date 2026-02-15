@@ -149,7 +149,7 @@ Job-Tracker/
 
 ## 🌐 Live Deployment
 
-🚀 Live App: https://job-tracker12.vercel.app/ 
+🚀 Live App: https://job-tracker1-blue.vercel.app/
 📦 GitHub Repository: https://github.com/AbhinavKG27/Job-Tracker
 
 
