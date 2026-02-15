@@ -58,7 +58,7 @@ const Proof = () => {
           <h1
             className="text-3xl font-bold tracking-tight proof-title"
           >
-            Project 1 — Job Notification Tracker
+            Job Notification Tracker
           </h1>
 
           <p className="mt-2 proof-subtitle">
