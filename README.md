@@ -149,7 +149,8 @@ Job-Tracker/
 
 ## 🌐 Live Deployment
 
-🚀 Live App: https://job-tracker1-blue.vercel.app/
+🚀 Live App: https://jobnotificationtracker.netlify.app/
+
 📦 GitHub Repository: https://github.com/AbhinavKG27/Job-Tracker
 
 

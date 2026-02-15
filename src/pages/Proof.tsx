@@ -171,7 +171,7 @@ const Proof = () => {
 
             <div className="space-y-2">
               <Label className="text-sm font-semibold proof-text">
-                Deployed URL (Vercel or equivalent)
+                Deployed URL (Vercel, Netlify or equivalent)
               </Label>
               <Input
                 placeholder="https://your-app.vercel.app"
