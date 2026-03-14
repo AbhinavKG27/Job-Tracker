@@ -10,6 +10,15 @@
   --secondary-dark: #4F4F51;
   --neutral-light: #D6D6D6;
 
+  --status-selected: #16A34A;
+  --status-selected-hover: #15803D;
+  --status-rejected: #DC2626;
+  --status-rejected-hover: #B91C1C;
+  --status-applied: #1E3A8A;
+  --status-applied-hover: #1E40AF;
+  --status-not-applied: #4B5563;
+  --status-not-applied-hover: #374151;
+
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'DM Sans', sans-serif;
   --font-mono: 'DM Mono', monospace;
@@ -334,8 +343,88 @@
 
   .mono-label { font-family: var(--font-mono); }
 
-  .status-applied { background: var(--accent-soft); color: var(--accent-coral); }
-  .status-rejected { background: var(--bg-alt); color: var(--text-3); }
-  .status-selected { background: var(--accent-pink-soft); color: var(--text); }
-  .status-not-applied { background: var(--muted); color: var(--text-2); }
+  .status-chip {
+    padding: 4px 10px;
+    font-size: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .status-chip:hover {
+    transform: translateY(-1px);
+  }
+
+  .status-chip.status-not-applied {
+    background: var(--status-not-applied);
+    color: #ffffff;
+    border-color: var(--status-not-applied);
+    transform: scale(1.02);
+  }
+
+  .status-chip.status-not-applied:hover {
+    background: var(--status-not-applied-hover);
+    border-color: var(--status-not-applied-hover);
+  }
+
+  .status-chip.status-applied {
+    background: var(--status-applied);
+    color: #ffffff;
+    border-color: var(--status-applied);
+    transform: scale(1.02);
+  }
+
+  .status-chip.status-applied:hover {
+    background: var(--status-applied-hover);
+    border-color: var(--status-applied-hover);
+  }
+
+  .status-chip.status-rejected {
+    background: var(--status-rejected);
+    color: #ffffff;
+    border-color: var(--status-rejected);
+    transform: scale(1.02);
+  }
+
+  .status-chip.status-rejected:hover {
+    background: var(--status-rejected-hover);
+    border-color: var(--status-rejected-hover);
+  }
+
+  .status-chip.status-selected {
+    background: var(--status-selected);
+    color: #ffffff;
+    border-color: var(--status-selected);
+    transform: scale(1.02);
+  }
+
+  .status-chip.status-selected:hover {
+    background: var(--status-selected-hover);
+    border-color: var(--status-selected-hover);
+  }
+
+  .status-not-applied {
+    background: var(--status-not-applied);
+    color: #ffffff;
+    border-color: var(--status-not-applied);
+  }
+
+  .status-applied {
+    background: var(--status-applied);
+    color: #ffffff;
+    border-color: var(--status-applied);
+  }
+
+  .status-rejected {
+    background: var(--status-rejected);
+    color: #ffffff;
+    border-color: var(--status-rejected);
+  }
+
+  .status-selected {
+    background: var(--status-selected);
+    color: #ffffff;
+    border-color: var(--status-selected);
+  }
 }
