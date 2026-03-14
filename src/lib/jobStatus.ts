@@ -7,7 +7,7 @@ export interface StatusUpdate {
   jobTitle: string;
   company: string;
   status: JobStatus;
-  date: string; // ISO string
+  date: string;
 }
 
 const STATUS_KEY = "jobTrackerStatus";
@@ -44,8 +44,7 @@ export function loadStatusUpdates(): StatusUpdate[] {
 
 export function addStatusUpdate(update: StatusUpdate) {
   const updates = loadStatusUpdates();
-  updates.unshift(update); // newest first
-  // Keep last 50
+  updates.unshift(update);
   if (updates.length > 50) updates.length = 50;
   localStorage.setItem(UPDATES_KEY, JSON.stringify(updates));
 }
@@ -53,14 +52,14 @@ export function addStatusUpdate(update: StatusUpdate) {
 export function getStatusBadgeClasses(status: JobStatus): string {
   switch (status) {
     case "Not Applied":
-      return "bg-muted text-muted-foreground";
+      return "status-not-applied";
     case "Applied":
-      return "bg-blue-100 text-blue-800";
+      return "status-applied";
     case "Rejected":
-      return "bg-red-100 text-red-800";
+      return "status-rejected";
     case "Selected":
-      return "bg-green-100 text-green-800";
+      return "status-selected";
     default:
-      return "bg-muted text-muted-foreground";
+      return "status-not-applied";
   }
 }

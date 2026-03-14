@@ -15,10 +15,10 @@ const StatusButtonGroup = ({ jobId, jobTitle, company, currentStatus, onStatusCh
         <button
           key={status}
           onClick={(e) => { e.stopPropagation(); onStatusChange(jobId, jobTitle, company, status); }}
-          className={`text-xs px-2 py-1 rounded-full font-medium transition-colors border ${
+          className={`text-xs px-2 py-1 rounded-full font-medium transition-colors border mono-label ${
             currentStatus === status
               ? getStatusBadgeClasses(status) + " border-transparent"
-              : "bg-background text-muted-foreground border-input hover:border-foreground/30"
+              : "bg-background text-muted-foreground border-input hover:border-[var(--accent-coral)]"
           }`}
         >
           {status}

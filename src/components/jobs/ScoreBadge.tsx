@@ -6,7 +6,7 @@ interface ScoreBadgeProps {
 
 const ScoreBadge = ({ score }: ScoreBadgeProps) => {
   const { bg, text } = getScoreBadgeColor(score);
-  return <span className={`${bg} ${text} text-xs font-bold px-2 py-0.5 rounded-full`}>{score}%</span>;
+  return <span className={`${bg} ${text} text-xs font-bold px-2 py-0.5 rounded-full mono-label`}>{score}%</span>;
 };
 
 export default ScoreBadge;

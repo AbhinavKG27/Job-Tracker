@@ -1,0 +1,631 @@
+https://ship-it-show.lovable.app/project/job-tracker
+
+#1 Step
+
+Create a premium SaaS design system called "KodNest Premium Build System".
+
+This is not a student project. This must feel like a serious B2C product company.
+
+DESIGN PHILOSOPHY:
+- Calm, Intentional, Coherent, Confident
+- Not flashy, not loud, not playful, not hackathon-style
+- No gradients, no glassmorphism, no neon colors, no animation noise
+
+COLOR SYSTEM:
+- Background: #F7F6F3 (off-white)
+- Primary text: #111111
+- Accent: #8B0000 (deep red)
+- Success: muted green
+- Warning: muted amber
+- Use maximum 4 colors across entire system
+
+TYPOGRAPHY:
+- Headings: Serif font, large, confident, generous spacing
+- Body: Clean sans-serif, 16–18px, line-height 1.6–1.8, max 720px for text blocks
+- No decorative fonts, no random sizes
+
+SPACING SYSTEM (consistent scale):
+8px, 16px, 24px, 40px, 64px
+Never use random spacing like 13px, 27px, etc. Whitespace is part of design.
+
+GLOBAL LAYOUT STRUCTURE:
+Every page must follow: [Top Bar] → [Context Header] → [Primary Workspace + Secondary Panel] → [Proof Footer]
+
+TOP BAR:
+- Left: Project name
+- Center: Progress indicator (Step X / Y)
+- Right: Status badge (Not Started / In Progress / Shipped)
+
+CONTEXT HEADER:
+- Large serif headline, 1-line subtext, clear purpose, no hype language
+
+PRIMARY WORKSPACE (70% width):
+- Where the main product interaction happens
+- Clean cards, predictable components, no crowding
+
+SECONDARY PANEL (30% width):
+- Step explanation (short)
+- Copyable prompt box
+- Buttons: Copy, Build in Lovable, It Worked, Error, Add Screenshot
+- Calm styling
+
+PROOF FOOTER (persistent bottom section):
+Checklist style: □ UI Built □ Logic Working □ Test Passed □ Deployed
+Each checkbox requires user proof input.
+
+COMPONENT RULES:
+- Primary button = solid deep red, Secondary = outlined
+- Same hover effect and border radius everywhere
+- Inputs: clean borders, no heavy shadows, clear focus state
+- Cards: subtle border, no drop shadows, balanced padding
+
+INTERACTION RULES:
+- Transitions: 150–200ms, ease-in-out, no bounce, no parallax
+
+ERROR & EMPTY STATES:
+- Errors: explain what went wrong + how to fix, never blame user
+- Empty states: provide next action, never feel dead
+
+Everything must feel like one mind designed it. No visual drift. Return confirmation once design system is created. Do NOT add product features yet.
+
+#2 Step
+
+Inside the existing KodNest Premium Build System, create the route skeleton for Job Notification Tracker.
+
+Create these routes:
+/
+/dashboard
+/settings
+/saved
+/digest
+/proof
+
+Follow KodNest Premium Design System:
+- Off-white background (#F7F6F3)
+- Deep red accent (#8B0000)
+- Serif headings
+- Calm, high whitespace layout
+
+Implement only:
+
+1) Top navigation bar:
+   Dashboard | Saved | Digest | Settings | Proof
+   Active link highlighted with deep red underline.
+
+2) Each route renders a placeholder page with:
+   - A large serif heading showing the page name
+   - A muted subtext: "This section will be built in the next step."
+
+3) Responsive: On mobile, navigation collapses into a hamburger menu.
+
+Do NOT add any content, data, or logic yet. Only the route shell and navigation.
+
+#3 Step
+
+Build a premium SaaS webapp called "Job Notification Tracker".
+
+Create these routes:
+
+/
+/dashboard
+/settings
+/saved
+/digest
+/proof
+
+Follow KodNest Premium Design System:
+- Off-white background
+- Deep red accent
+- Serif headings
+- Calm, high whitespace layout
+
+Implement only:
+
+1) Top navigation:
+   Dashboard | Saved | Digest | Settings | Proof
+
+2) Landing page:
+   Headline: "Stop Missing The Right Jobs."
+   Subtext: "Precision-matched job discovery delivered daily at 9AM."
+   CTA button: "Start Tracking" → /settings
+
+3) /settings page:
+   Add placeholder preference fields:
+     - Role keywords
+     - Preferred locations
+     - Mode (Remote/Hybrid/Onsite)
+     - Experience level
+   Do NOT implement logic yet.
+
+4) /dashboard page:
+   Clean empty state:
+   "No jobs yet. In the next step, you will load a realistic dataset."
+
+5) /saved and /digest pages:
+   Clean premium empty states.
+
+6) /proof page:
+   Placeholder for artifact collection.
+
+Do NOT add dataset.
+Do NOT implement matching.
+Do NOT add digest logic.
+Do NOT add filters yet.
+
+Only create clean premium app skeleton.
+
+#5 Step
+
+Upgrade the existing Job Notification Tracker by implementing real preference logic and deterministic match scoring.
+
+NON-NEGOTIABLE:
+- Do NOT change routes.
+- Do NOT alter design system.
+- Do NOT remove existing features.
+
+------------------------------------------
+1) IMPLEMENT PREFERENCES LOGIC
+------------------------------------------
+
+On /settings:
+
+Fields:
+- roleKeywords (comma-separated text input)
+- preferredLocations (multi-select dropdown)
+- preferredMode (checkboxes: Remote, Hybrid, Onsite)
+- experienceLevel (dropdown)
+- skills (comma-separated text input)
+- minMatchScore (slider 0–100, default 40)
+
+Save preferences to localStorage as:
+jobTrackerPreferences
+
+On load:
+If preferences exist, prefill form.
+
+------------------------------------------
+2) IMPLEMENT MATCH SCORE ENGINE
+------------------------------------------
+
+For each job on /dashboard, compute matchScore using these exact rules:
+
++25 if any roleKeyword appears in job.title (case-insensitive)
++15 if any roleKeyword appears in job.description
++15 if job.location matches preferredLocations
++10 if job.mode matches preferredMode
++10 if job.experience matches experienceLevel
++15 if overlap between job.skills and user.skills (any match)
++5 if postedDaysAgo <= 2
++5 if source is LinkedIn
+
+Cap score at 100.
+
+Display matchScore as a badge on job card:
+- 80–100: green
+- 60–79: amber
+- 40–59: neutral
+- <40: subtle grey
+
+------------------------------------------
+3) ADD "SHOW ONLY MATCHES" TOGGLE
+------------------------------------------
+
+On /dashboard:
+
+Add toggle:
+"Show only jobs above my threshold"
+
+When enabled:
+Filter jobs where matchScore >= minMatchScore
+
+------------------------------------------
+4) UPDATE FILTER BAR LOGIC
+------------------------------------------
+
+Filters must combine logically (AND behavior):
+
+- Keyword search
+- Location filter
+- Mode filter
+- Experience filter
+- Source filter
+
+Sorting must work:
+- Latest (postedDaysAgo ascending)
+- Match Score (descending)
+- Salary (simple numeric extract sort if possible)
+
+------------------------------------------
+5) EDGE CASE HANDLING
+------------------------------------------
+
+If preferences not set:
+Show banner:
+"Set your preferences to activate intelligent matching."
+
+If no matches found:
+Show premium empty state:
+"No roles match your criteria. Adjust filters or lower threshold."
+
+------------------------------------------
+6) PERFORMANCE RULE
+------------------------------------------
+
+Do not re-render entire list unnecessarily.
+Keep UI smooth.
+No console errors.
+
+------------------------------------------
+OUTPUT REQUIRED
+------------------------------------------
+
+After implementation:
+Return:
+
+1) Confirmation that scoring rules exactly match specification.
+2) Brief explanation of matchScore calculation logic.
+3) Verification steps:
+   - Example preference to test
+   - Expected match behavior
+
+#6 Step
+
+Upgrade Job Notification Tracker with a Daily Digest Engine.
+
+NON-NEGOTIABLE:
+- Do NOT change routes.
+- Do NOT remove existing features.
+- Keep design premium.
+
+------------------------------------------
+1) CREATE DIGEST LOGIC
+------------------------------------------
+
+On /digest page:
+
+Add button:
+"Generate Today's 9AM Digest (Simulated)"
+
+When clicked:
+
+- Select top 10 jobs sorted by:
+  1) matchScore descending
+  2) postedDaysAgo ascending
+
+- Store digest in localStorage as:
+  jobTrackerDigest_{YYYY-MM-DD}
+
+- If digest already exists for today:
+  Load existing instead of regenerating.
+
+------------------------------------------
+2) DIGEST UI (Email-Style Layout)
+------------------------------------------
+
+Render digest as:
+
+Header:
+"Top 10 Jobs For You — 9AM Digest"
+Subtext: Today's Date
+
+For each job:
+- Title
+- Company
+- Location
+- Experience
+- Match Score
+- Apply button
+
+Footer:
+"This digest was generated based on your preferences."
+
+Design must feel like:
+Clean email newsletter.
+White card inside off-white background.
+
+------------------------------------------
+3) ACTION BUTTONS
+------------------------------------------
+
+Add:
+
+- "Copy Digest to Clipboard"
+  → Copy plain-text formatted list.
+
+- "Create Email Draft"
+  → Use mailto: with subject
+     "My 9AM Job Digest"
+  → Include digest text in body.
+
+------------------------------------------
+4) STATE HANDLING
+------------------------------------------
+
+If no preferences set:
+Show blocking message:
+"Set preferences to generate a personalized digest."
+
+If no matches found:
+Show:
+"No matching roles today. Check again tomorrow."
+
+------------------------------------------
+5) SIMULATION NOTE
+------------------------------------------
+
+Add subtle small note:
+"Demo Mode: Daily 9AM trigger simulated manually."
+
+------------------------------------------
+OUTPUT REQUIRED
+------------------------------------------
+
+Return:
+
+1) Confirmation digest persists per day.
+2) Verification steps:
+   - Generate digest
+   - Refresh page
+   - Confirm persistence
+   - Test Copy and Email Draft
+
+#7 Step
+
+Upgrade Job Notification Tracker with persistent job status tracking and notification templates.
+
+NON-NEGOTIABLE:
+- Do NOT change routes.
+- Do NOT remove existing features.
+- Persist everything in localStorage.
+- No UI drift.
+
+------------------------------------------
+1) IMPLEMENT JOB STATUS TRACKING
+------------------------------------------
+
+On each job card (in /dashboard and /saved):
+
+Add status button group:
+
+Default:
+"Not Applied"
+
+Other states:
+- Applied
+- Rejected
+- Selected
+
+When user changes status:
+- Store in localStorage:
+  jobTrackerStatus[jobId] = status
+- Reflect visually with badge color:
+   Not Applied → neutral
+   Applied → blue
+   Rejected → red
+   Selected → green
+
+Status must persist after refresh.
+
+------------------------------------------
+2) ADD STATUS FILTER
+------------------------------------------
+
+Add dropdown filter on /dashboard:
+Filter by:
+- All
+- Not Applied
+- Applied
+- Rejected
+- Selected
+
+Filtering must combine with existing filters (AND logic).
+
+------------------------------------------
+3) SIMULATED NOTIFICATION TEMPLATE
+------------------------------------------
+
+When status changes to:
+- Applied
+- Rejected
+- Selected
+
+Show a small toast:
+"Status updated: {status}"
+
+On /digest page:
+Add section:
+"Recent Status Updates"
+
+List:
+- Job title
+- Company
+- Status
+- Date changed
+
+------------------------------------------
+4) EDGE CASES
+------------------------------------------
+
+If no status exists:
+Assume "Not Applied".
+
+If user clears localStorage:
+All status resets cleanly.
+
+------------------------------------------
+5) OUTPUT REQUIRED
+------------------------------------------
+
+Return:
+
+1) Confirmation status persists after refresh.
+2) Confirmation filter logic works with status + matchScore + other filters.
+3) Verification steps:
+   - Change status
+   - Refresh
+   - Filter by that status
+   - Confirm correct jobs show
+
+#8 Step
+
+Add a Built-In Test Checklist system to Job Notification Tracker.
+
+NON-NEGOTIABLE:
+- Do NOT change routes.
+- Do NOT remove features.
+- Keep premium design.
+
+------------------------------------------
+1) CREATE TEST CHECKLIST SECTION
+------------------------------------------
+
+On route /jt/07-test:
+
+Add a clean checklist UI with these test items:
+
+□ Preferences persist after refresh
+□ Match score calculates correctly
+□ "Show only matches" toggle works
+□ Save job persists after refresh
+□ Apply opens in new tab
+□ Status update persists after refresh
+□ Status filter works correctly
+□ Digest generates top 10 by score
+□ Digest persists for the day
+□ No console errors on main pages
+
+Each item must have:
+- Checkbox
+- Optional small "How to test" tooltip
+
+------------------------------------------
+2) ADD TEST RESULT SUMMARY
+------------------------------------------
+
+At top of checklist:
+
+Display:
+"Tests Passed: X / 10"
+
+If less than 10:
+Show subtle warning:
+"Resolve all issues before shipping."
+
+------------------------------------------
+3) ENFORCE SHIP LOCK
+------------------------------------------
+
+Modify navigation logic:
+
+Route /jt/08-ship must remain locked until:
+All 10 checklist items are checked.
+
+------------------------------------------
+4) OPTIONAL SELF-VERIFY BUTTON
+------------------------------------------
+
+Add small button:
+"Reset Test Status"
+
+------------------------------------------
+5) OUTPUT REQUIRED
+------------------------------------------
+
+Return:
+1) Confirmation checklist logic implemented.
+2) Confirmation /jt/08-ship is locked until all tests checked.
+3) Verification steps to confirm locking works.
+
+#9 Step
+
+Finalize Job Notification Tracker with Proof & Submission System.
+
+NON-NEGOTIABLE:
+- Do NOT modify existing logic.
+- Do NOT break previous routes.
+- Keep premium design.
+
+------------------------------------------
+1) CREATE FINAL PROOF PAGE (/jt/proof)
+------------------------------------------
+
+Display summary:
+
+Project 1 — Job Notification Tracker
+
+Sections:
+
+A) Step Completion Summary
+- Show 8 steps with status (Completed / Pending)
+
+B) Artifact Collection Inputs
+Required:
+- Lovable Project Link
+- GitHub Repository Link
+- Deployed URL (Vercel or equivalent)
+
+Each input must:
+- Validate URL format
+- Store in localStorage
+
+------------------------------------------
+2) FINAL SUBMISSION EXPORT
+------------------------------------------
+
+Add button:
+"Copy Final Submission"
+
+When clicked, copy formatted text:
+
+------------------------------------------
+Job Notification Tracker — Final Submission
+
+Lovable Project:
+{link}
+
+GitHub Repository:
+{link}
+
+Live Deployment:
+{link}
+
+Core Features:
+- Intelligent match scoring
+- Daily digest simulation
+- Status tracking
+- Test checklist enforced
+------------------------------------------
+
+------------------------------------------
+3) SHIP VALIDATION RULE
+------------------------------------------
+
+Do not mark Project 1 as "Shipped" until:
+- All 3 links are provided
+- All 10 test checklist items passed
+
+Show status badge:
+- Not Started
+- In Progress
+- Shipped
+
+------------------------------------------
+4) POLISH
+------------------------------------------
+
+Add subtle completion message when shipped:
+
+"Project 1 Shipped Successfully."
+
+No confetti.
+No loud celebration.
+Calm confirmation.
+
+------------------------------------------
+5) OUTPUT REQUIRED
+------------------------------------------
+
+Return:
+1) Confirmation proof validation works.
+2) Confirmation status changes only after conditions met.
+3) Verification steps.

@@ -111,7 +111,7 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pt-14">
       <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
       {currentPage === "/" && <LandingPage setCurrentPage={setCurrentPage} />}
       {currentPage === "dashboard" && (

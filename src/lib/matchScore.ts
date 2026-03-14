@@ -76,8 +76,8 @@ export function computeMatchScore(job: Job, prefs: Preferences): number {
 }
 
 export function getScoreBadgeColor(score: number): { bg: string; text: string } {
-  if (score >= 80) return { bg: "bg-green-100", text: "text-green-800" };
-  if (score >= 60) return { bg: "bg-amber-100", text: "text-amber-800" };
-  if (score >= 40) return { bg: "bg-gray-200", text: "text-gray-700" };
-  return { bg: "bg-gray-100", text: "text-gray-400" };
+  if (score >= 80) return { bg: "bg-[var(--accent-soft)]", text: "text-[var(--accent-coral)]" };
+  if (score >= 60) return { bg: "bg-[var(--accent-pink-soft)]", text: "text-foreground" };
+  if (score >= 40) return { bg: "bg-muted", text: "text-muted-foreground" };
+  return { bg: "bg-background", text: "text-[var(--text-3)]" };
 }

@@ -28,10 +28,10 @@ const DashboardPage = ({
     <FilterBar filters={filters} setFilters={setFilters} />
 
     {!hasPreferences && (
-      <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 flex items-center gap-3">
-        <AlertCircle className="w-5 h-5 text-amber-600 shrink-0" />
-        <p className="text-sm text-amber-800 flex-1">Set your preferences to activate intelligent matching.</p>
-        <button onClick={() => setCurrentPage("settings")} className="text-sm font-medium text-red-700 hover:underline whitespace-nowrap">Go to Settings →</button>
+      <div className="panel p-4 mb-6 flex items-center gap-3">
+        <AlertCircle className="w-5 h-5 text-[var(--accent-coral)] shrink-0" />
+        <p className="text-sm text-foreground flex-1">Set your preferences to activate intelligent matching.</p>
+        <button onClick={() => setCurrentPage("settings")} className="text-sm font-medium text-[var(--accent-coral)] hover:underline whitespace-nowrap">Go to Settings →</button>
       </div>
     )}
 
@@ -44,7 +44,7 @@ const DashboardPage = ({
         <label className="flex items-center gap-2 cursor-pointer select-none">
           <span className="text-sm text-muted-foreground">Show only matches</span>
           <button onClick={() => setShowOnlyMatches(v => !v)}
-            className={`relative w-10 h-6 rounded-full transition-colors ${showOnlyMatches ? "bg-red-700" : "bg-muted"}`}>
+            className={`relative w-10 h-6 rounded-full transition-colors ${showOnlyMatches ? "bg-[var(--accent-coral)]" : "bg-muted"}`}>
             <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform ${showOnlyMatches ? "translate-x-4" : ""}`} />
           </button>
         </label>

@@ -17,11 +17,10 @@ interface FilterBarProps {
 }
 
 const FilterBar = ({ filters, setFilters }: FilterBarProps) => (
-  <div className="bg-card border border-border rounded-xl p-5 mb-6">
+  <div className="card p-5 mb-6">
     <div className="mb-4">
       <p className="text-sm font-medium text-foreground mb-2">Search & Filter</p>
-      <input value={filters.keyword} onChange={e => setFilters(f => ({ ...f, keyword: e.target.value }))} placeholder="Search jobs or companies..."
-        className="w-full px-4 py-3 border border-input rounded-lg focus:border-red-700 focus:outline-none bg-background text-foreground" />
+      <input value={filters.keyword} onChange={e => setFilters(f => ({ ...f, keyword: e.target.value }))} placeholder="Search jobs or companies..." />
     </div>
     <div className="flex flex-wrap gap-2">
       {[
@@ -30,25 +29,23 @@ const FilterBar = ({ filters, setFilters }: FilterBarProps) => (
         { key: "experience" as const, label: "All Levels", opts: ALL_EXPERIENCES },
         { key: "source" as const, label: "All Sources", opts: ALL_SOURCES },
       ].map(({ key, label, opts }) => (
-        <select key={key} value={filters[key]} onChange={e => setFilters(f => ({ ...f, [key]: e.target.value }))} aria-label={label} title={label}
-          className="px-3 py-2 border border-input rounded-lg text-sm focus:border-red-700 focus:outline-none bg-background text-foreground">
+        <select key={key} value={filters[key]} onChange={e => setFilters(f => ({ ...f, [key]: e.target.value }))} aria-label={label} title={label} className="w-auto min-w-32">
           <option value="">{label}</option>
           {opts.map(o => <option key={o} value={o}>{o}</option>)}
         </select>
       ))}
-      <select value={filters.status} onChange={e => setFilters(f => ({ ...f, status: e.target.value }))} aria-label="Filter by status" title="Filter by status"
-        className="px-3 py-2 border border-input rounded-lg text-sm focus:border-red-700 focus:outline-none bg-background text-foreground">
+      <select value={filters.status} onChange={e => setFilters(f => ({ ...f, status: e.target.value }))} aria-label="Filter by status" title="Filter by status" className="w-auto min-w-32">
         <option value="">All Statuses</option>
         {ALL_STATUSES.map(s => <option key={s} value={s}>{s}</option>)}
       </select>
-      <select value={filters.sort} onChange={e => setFilters(f => ({ ...f, sort: e.target.value }))} aria-label="Sort jobs" title="Sort jobs"
-        className="px-3 py-2 border border-input rounded-lg text-sm focus:border-red-700 focus:outline-none bg-background text-foreground">
+      <select value={filters.sort} onChange={e => setFilters(f => ({ ...f, sort: e.target.value }))} aria-label="Sort jobs" title="Sort jobs" className="w-auto min-w-32">
         <option>Latest</option>
         <option>Match Score</option>
         <option>Salary: High to Low</option>
       </select>
-      <button onClick={() => setFilters({ keyword: "", location: "", mode: "", experience: "", source: "", sort: "Latest", status: "" })}
-        className="px-3 py-2 border border-input text-muted-foreground rounded-lg text-sm hover:bg-muted font-medium">Reset</button>
+      <button onClick={() => setFilters({ keyword: "", location: "", mode: "", experience: "", source: "", sort: "Latest", status: "" })} className="btn-ghost">
+        Reset
+      </button>
     </div>
   </div>
 );
